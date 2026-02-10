@@ -39,6 +39,9 @@ public class UsersController {
         return usersService.modificaUtente(userId, body);
     }
 
-    /*@DeleteMapping("/{userId}")
-    public void deleteUser(@PathVariable long userId){}*/
+    @DeleteMapping("/{userId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteUser(@PathVariable long userId){
+        usersService.eliminaUtente(userId);
+    }
 }

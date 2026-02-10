@@ -51,4 +51,15 @@ public class UsersService {
         return found;
     }
 
+    public void eliminaUtente(long userId){
+        User found = null;
+        for (int i = 0; i < listaUser.size(); i++) {
+            if (listaUser.get(i).getUserId() == userId){
+                found = listaUser.get(i);
+                listaUser.remove(listaUser.get(i));
+            }
+        }
+        if (found == null) throw new NotFoundException(userId);
+    }
+
 }
