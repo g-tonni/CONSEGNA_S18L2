@@ -1,0 +1,32 @@
+package giadatonni.CONSEGNA_S18L2.controllers;
+
+import giadatonni.CONSEGNA_S18L2.entities.Blog;
+import giadatonni.CONSEGNA_S18L2.entities.User;
+import giadatonni.CONSEGNA_S18L2.payload.BlogPayload;
+import giadatonni.CONSEGNA_S18L2.payload.UserPayload;
+import giadatonni.CONSEGNA_S18L2.services.BlogsService;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/blogs")
+public class BlogsController {
+    private final BlogsService blogsService;
+
+    public BlogsController(BlogsService blogsService) {
+        this.blogsService = blogsService;
+    }
+
+    @GetMapping
+    public List<Blog> findAll(){
+        return blogsService.getListaBlog();
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Blog addBlog(@RequestBody BlogPayload body){
+        return blogsService.postaBlog(body);
+    }
+}
