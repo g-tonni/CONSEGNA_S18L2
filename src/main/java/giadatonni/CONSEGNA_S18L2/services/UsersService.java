@@ -36,4 +36,19 @@ public class UsersService {
         return found;
     }
 
+    public User modificaUtente(long userId, UserPayload body){
+        User found = null;
+        for (int i = 0; i < listaUser.size(); i++) {
+            if (listaUser.get(i).getUserId() == userId){
+                found = listaUser.get(i);
+                found.setNome(body.getNome());
+                found.setCognome(body.getCognome());
+                found.setEmail(body.getEmail());
+                found.setDataNascita(body.getDataNascita());
+            }
+        }
+        if (found == null) throw new NotFoundException(userId);
+        return found;
+    }
+
 }

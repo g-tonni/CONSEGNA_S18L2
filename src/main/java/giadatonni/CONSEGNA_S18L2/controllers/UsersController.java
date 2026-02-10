@@ -34,9 +34,11 @@ public class UsersController {
         return usersService.trovaUtente(userId);
     }
 
-    /*@PutMapping("/{userId}")
-    public User putUser(@PathVariable long userId, @RequestBody UserPayload body){}
+    @PutMapping("/{userId}")
+    public User putUser(@PathVariable long userId, @RequestBody UserPayload body){
+        return usersService.modificaUtente(userId, body);
+    }
 
-    @DeleteMapping("/{userId}")
+    /*@DeleteMapping("/{userId}")
     public void deleteUser(@PathVariable long userId){}*/
 }
