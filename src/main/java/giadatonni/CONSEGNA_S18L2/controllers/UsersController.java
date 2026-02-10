@@ -29,10 +29,12 @@ public class UsersController {
         return usersService.postaUtente(body);
     }
 
-    /*@GetMapping("/{userId}")
-    public User findById(@PathVariable long userId){}
+    @GetMapping("/{userId}")
+    public User findById(@PathVariable long userId){
+        return usersService.trovaUtente(userId);
+    }
 
-    @PutMapping("/{userId}")
+    /*@PutMapping("/{userId}")
     public User putUser(@PathVariable long userId, @RequestBody UserPayload body){}
 
     @DeleteMapping("/{userId}")
