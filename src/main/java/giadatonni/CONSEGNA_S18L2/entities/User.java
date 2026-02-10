@@ -18,7 +18,7 @@ public class User {
     private LocalDate dataNascita;
     private String avatar;
 
-    public User(long userId, String nome, String cognome, String email, LocalDate dataNascita, String avatar) {
+    public User(String nome, String cognome, String email, LocalDate dataNascita) {
         Random rndm = new Random();
         this.userId=rndm.nextInt(1, 500);
         this.nome = nome;

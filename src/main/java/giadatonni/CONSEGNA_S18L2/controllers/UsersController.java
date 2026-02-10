@@ -2,6 +2,8 @@ package giadatonni.CONSEGNA_S18L2.controllers;
 
 import giadatonni.CONSEGNA_S18L2.entities.User;
 import giadatonni.CONSEGNA_S18L2.payload.UserPayload;
+import giadatonni.CONSEGNA_S18L2.services.UsersService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,18 +12,29 @@ import java.util.List;
 @RequestMapping("/users")
 public class UsersController {
 
+    private final UsersService usersService;
+
+    public UsersController(UsersService usersService) {
+        this.usersService = usersService;
+    }
+
     @GetMapping
-    public List<User> findAll(){}
+    public List<User> findAll(){
+        return usersService.getListaUser();
+    }
 
     @PostMapping
-    public User addUser(@RequestBody UserPayload body){}
+    @ResponseStatus(HttpStatus.CREATED)
+    public User addUser(@RequestBody UserPayload body){
+        return usersService.postaUtente(body);
+    }
 
-    @GetMapping("/{userId}")
+    /*@GetMapping("/{userId}")
     public User findById(@PathVariable long userId){}
 
     @PutMapping("/{userId}")
     public User putUser(@PathVariable long userId, @RequestBody UserPayload body){}
 
     @DeleteMapping("/{userId}")
-    public void deleteUser(@PathVariable long userId){}
+    public void deleteUser(@PathVariable long userId){}*/
 }
