@@ -39,4 +39,10 @@ public class BlogsController {
     public Blog putBlog(@PathVariable long blogId, @RequestBody BlogPayload body){
         return blogsService.modificaBlog(blogId, body);
     }
+
+    @DeleteMapping("/{blogId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteBlog(@PathVariable long blogId){
+        blogsService.eliminaBlog(blogId);
+    }
 }

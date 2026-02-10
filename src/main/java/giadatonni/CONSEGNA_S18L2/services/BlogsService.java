@@ -52,4 +52,15 @@ public class BlogsService {
         if (found == null) throw new NotFoundException(blogId);
         return found;
     }
+
+    public void eliminaBlog(long blogId){
+        Blog found = null;
+        for (int i = 0; i < listaBlog.size(); i++) {
+            if (listaBlog.get(i).getBlogId() == blogId){
+                found = listaBlog.get(i);
+                listaBlog.remove(listaBlog.get(i));
+            }
+        }
+        if (found == null) throw new NotFoundException(blogId);
+    }
 }
