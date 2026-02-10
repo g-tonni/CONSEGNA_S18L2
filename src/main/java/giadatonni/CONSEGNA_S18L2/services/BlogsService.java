@@ -26,4 +26,30 @@ public class BlogsService {
         this.listaBlog.add(nuovoBlog);
         return nuovoBlog;
     }
+
+    public Blog trovaBlog(long blogId){
+        Blog found = null;
+        for (int i = 0; i < listaBlog.size(); i++) {
+            if (listaBlog.get(i).getBlogId() == blogId){
+                found = listaBlog.get(i);
+            }
+        }
+        if (found == null) throw new NotFoundException(blogId);
+        return found;
+    }
+
+    public Blog modificaBlog(long blogId, BlogPayload body){
+        Blog found = null;
+        for (int i = 0; i < listaBlog.size(); i++) {
+            if (listaBlog.get(i).getBlogId() == blogId){
+                found = listaBlog.get(i);
+                found.setCategoria(body.getCategoria());
+                found.setTitolo(body.getTitolo());
+                found.setContenuto(body.getContenuto());
+                found.setTempoLettura(body.getTempoLettura());
+            }
+        }
+        if (found == null) throw new NotFoundException(blogId);
+        return found;
+    }
 }

@@ -29,4 +29,14 @@ public class BlogsController {
     public Blog addBlog(@RequestBody BlogPayload body){
         return blogsService.postaBlog(body);
     }
+
+    @GetMapping("/{blogId}")
+    public Blog findById(@PathVariable long blogId){
+        return blogsService.trovaBlog(blogId);
+    }
+
+    @PutMapping("/{blogId}")
+    public Blog putBlog(@PathVariable long blogId, @RequestBody BlogPayload body){
+        return blogsService.modificaBlog(blogId, body);
+    }
 }
